@@ -73,7 +73,7 @@ def usage():
             elif o in ("-t", "--TARGET AQUIREDDDDDDD"):
                             target = a
             elif o in ("p", "--S PORTS N DORTS"):
-                            port = int a
+                            port = int a 
              else:
                 assert False,"UNHANDLED OPTION DEATH UPON U"
 
@@ -151,3 +151,32 @@ def run_command(command):
                 output = subprocess.check_output(command,stderr=subprocess.STDOUT, shell=True)
         except:
                 output = "OH NOOOOOOO FWAILEDDDDD TO EXECUTE GO CLIMB A TREEEEEEEE"
+
+
+def client_handler(client_socket):
+        global upload
+        global execute
+        global command
+
+        if len(upload_destination):
+
+                file_buffer = ""
+
+                # keep reading datat until you got no mo data to read
+        while True:
+                data = client_socket.recv(1024)
+
+                it not data:
+                        break
+                else:
+                                file_buffer += data
+
+        # now we take these bytes and try to write them out
+        try:
+                        file_descriptor = open(upload_destination, "wb")
+                        file_descripotor.write(file_buffer)
+                        file_descriptor.close()
+
+                        #yeaaa we wrote the file jeez
+                        client.socket.send("GRRRRREAT Succes!!! file is at %s\r\n" % upload_destination)
+                        
