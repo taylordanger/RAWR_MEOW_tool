@@ -197,4 +197,12 @@ def client_handler(client_socket):
                                 client_socket.send("<MEOW:#>")
 
                         # MEOW we recieve until something happens or whatebber MEOW
-                        
+                        (enter key)
+                cmd_buffer + ""
+                while "\n" not in cmd_buffer:
+                                cmd_buffer += client_socket.recv(1024)
+
+                # send me that outputttttt
+                response = run_command(cmd_buffer)
+
+                client_socket.send(response)
