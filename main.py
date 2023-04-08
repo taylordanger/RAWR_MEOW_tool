@@ -166,7 +166,7 @@ def client_handler(client_socket):
         while True:
                 data = client_socket.recv(1024)
 
-                it not data:
+                if not data:
                         break
                 else:
                                 file_buffer += data
@@ -179,4 +179,22 @@ def client_handler(client_socket):
 
                         #yeaaa we wrote the file jeez
                         client.socket.send("GRRRRREAT Succes!!! file is at %s\r\n" % upload_destination)
+
+        except:
+                        client_socket.send("OHHHH NOESSSSSSS no files saved...not even at %s\r\n" % upload_destination)
+
+                        if len(execute):
+
+                                output = run_command(execute)
+
+                                client_socket.send(output)
+
+        # AYOOOOOO loook at you go! lets do another look (loop) if that dang 
+        # command shell was requested
+                if command:
+                        
+                        while True:
+                                client_socket.send("<MEOW:#>")
+
+                        # MEOW we recieve until something happens or whatebber MEOW
                         
